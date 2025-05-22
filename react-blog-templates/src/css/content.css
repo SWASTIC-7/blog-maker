@@ -1,0 +1,9 @@
+.blog-content {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #222;
+  margin-bottom: 2rem;
+}
+.blog-content p {
+  margin-bottom: 1.2rem;
+} 

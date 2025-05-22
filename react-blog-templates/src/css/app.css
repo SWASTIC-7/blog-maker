@@ -1,0 +1,134 @@
+body {
+  background: var(--background-color);
+  margin: 0;
+  font-family: var(--body-font);
+  color: var(--text-color);
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 250px 1fr 250px;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.main-content {
+  background: var(--panel-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.left-panel {
+  background: var(--panel-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+  border: 1px solid var(--panel-border);
+}
+
+.right-panel {
+  background: var(--panel-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+  border: 1px solid var(--panel-border);
+}
+
+.panel-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  border-bottom: 2px solid var(--panel-border);
+  padding-bottom: 0.5rem;
+  font-family: var(--heading-font);
+}
+
+.toc-item {
+  padding: 0.5rem 0;
+  cursor: pointer;
+  color: var(--secondary-color);
+  transition: color 0.2s;
+}
+
+.toc-item:hover {
+  color: var(--text-color);
+}
+
+.toc-item.active {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.topic-item {
+  padding: 0.5rem 0;
+  color: var(--secondary-color);
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.topic-item:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 1200px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .left-panel, .right-panel {
+    display: none;
+  }
+}
+
+.app {
+  min-height: 100vh;
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  padding: 2rem;
+  position: relative;
+}
+
+/* Theme Switcher Position */
+.theme-switcher {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+} 

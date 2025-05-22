@@ -1,0 +1,254 @@
+.image-block {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.image-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control-group label {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.image-size-select,
+.image-alignment-select,
+.image-style-select {
+  padding: 0.5rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  min-width: 120px;
+}
+
+.image-size-select:focus,
+.image-alignment-select:focus,
+.image-style-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.image-preview {
+  margin: 1rem 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.image-container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-container.small img {
+  max-width: 300px;
+}
+
+.image-container.medium img {
+  max-width: 500px;
+}
+
+.image-container.large img {
+  max-width: 700px;
+}
+
+.image-container.full img {
+  width: 100%;
+}
+
+.image-container.left {
+  margin-right: auto;
+}
+
+.image-container.center {
+  margin: 0 auto;
+}
+
+.image-container.right {
+  margin-left: auto;
+}
+
+.image-container.rounded img {
+  border-radius: 8px;
+}
+
+.image-container.circle img {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.image-container.bordered img {
+  border: 2px solid var(--primary-color);
+  padding: 4px;
+}
+
+.image-caption {
+  margin: 0.5rem 0 0;
+  padding: 0.5rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.image-upload-placeholder {
+  width: 100%;
+  min-height: 200px;
+  background: var(--panel-bg);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-sizing: border-box;
+}
+
+.image-upload-placeholder:hover {
+  background: var(--panel-border);
+}
+
+.image-upload-input {
+  display: none;
+}
+
+.upload-prompt {
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.upload-error {
+  color: #ff4d4f;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.image-details {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.image-url-input,
+.image-alt-input,
+.image-caption-input {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--panel-bg);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  transition: box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.image-url-input:focus,
+.image-alt-input:focus,
+.image-caption-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+/* Image sizes */
+.small {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.medium {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.large {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.full {
+  max-width: 100%;
+}
+
+/* Image alignments */
+.left {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Image styles */
+.rounded img {
+  border-radius: 6px;
+}
+
+.circle img {
+  border-radius: 50%;
+}
+
+.bordered img {
+  border: 1px solid var(--panel-border);
+}
+
+@media (max-width: 768px) {
+  .image-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .control-group {
+    width: 100%;
+  }
+
+  .image-size-select,
+  .image-alignment-select,
+  .image-style-select {
+    width: 100%;
+  }
+
+  .image-container.small img,
+  .image-container.medium img,
+  .image-container.large img {
+    max-width: 100%;
+  }
+} 

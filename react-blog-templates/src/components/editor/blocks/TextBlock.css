@@ -1,0 +1,165 @@
+.text-block {
+  width: 100%;
+  position: relative;
+}
+
+.text-controls {
+  margin-bottom: 1rem;
+}
+
+.link-button {
+  padding: 0.5rem 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.link-button:hover {
+  background: var(--accent-color);
+}
+
+.text-editor {
+  width: 100%;
+  min-height: 100px;
+  padding: 1rem;
+  background: var(--panel-bg);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: box-shadow 0.2s;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.text-editor:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.text-editor::placeholder {
+  color: var(--secondary-color);
+  opacity: 0.7;
+}
+
+/* Link Modal Styles */
+.link-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.link-modal {
+  background: var(--panel-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.link-modal h3 {
+  margin: 0 0 1rem;
+  color: var(--text-color);
+  font-size: 1.2rem;
+}
+
+.link-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.selected-text {
+  padding: 0.5rem;
+  background: var(--background-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.link-url-input {
+  padding: 0.5rem;
+  background: var(--background-color);
+  border: none;
+  border-radius: 4px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  transition: box-shadow 0.2s;
+}
+
+.link-url-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cancel-button,
+.add-link-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-button {
+  background: var(--panel-bg);
+  color: var(--text-color);
+}
+
+.add-link-button {
+  background: var(--primary-color);
+  color: white;
+}
+
+.cancel-button:hover {
+  background: var(--panel-border);
+}
+
+.add-link-button:hover {
+  background: var(--accent-color);
+}
+
+.add-link-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .link-modal {
+    width: 95%;
+    margin: 1rem;
+  }
+} 
