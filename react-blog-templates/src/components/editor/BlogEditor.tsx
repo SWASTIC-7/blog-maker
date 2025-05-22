@@ -7,6 +7,7 @@ import HeadingBlock from './blocks/HeadingBlock';
 import ImageBlock from './blocks/ImageBlock';
 import VideoBlock from './blocks/VideoBlock';
 import BlockSelector from './BlockSelector';
+import { api } from '../../services/api';
 import './BlogEditor.css';
 
 export interface Block {
@@ -96,26 +97,14 @@ const BlogEditor: React.FC<BlogEditorProps> = ({ blocks, onBlocksChange }) => {
       setIsPublishing(true);
       setPublishError(null);
 
-      // Prepare the blog data
-      const blogData = {
-        blocks,
-        metadata: {
-          title: blocks.find(block => block.type === 'heading' && block.config.level === 1)?.content || 'Untitled Blog',
-          publishedAt: new Date().toISOString(),
-          author: 'Your Name', // You can make this dynamic
-          slug: blocks.find(block => block.type === 'heading' && block.config.level === 1)?.content
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/(^-|-$)/g, '') || 'untitled-blog'
-        }
-      };
+      // Get the main heading for the title
+      const title = blocks.find(block => block.type === 'heading' && block.config.level === 1)?.content || 'Untitled Blog';
 
-      // Store the blog data in localStorage for now
-      // In a real application, you would send this to your backend
-      localStorage.setItem('publishedBlog', JSON.stringify(blogData));
+      // Publish the blog using our API
+      const { url, slug } = await api.publishBlog(title, blocks);
 
-      // Navigate to the publish page
-      navigate('/publish');
+      // Navigate to the published blog
+      window.location.href = url;
     } catch (error) {
       setPublishError('Failed to publish blog. Please try again.');
       console.error('Publishing error:', error);

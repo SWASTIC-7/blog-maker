@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import BlogEditor from './components/editor/BlogEditor';
 import BlogPreview from './components/editor/BlogPreview';
+import BlogPost from './components/editor/BlogPost';
 import ThemeSwitcher from './components/theme/ThemeSwitcher';
 import { themes, type Theme } from './themes/themes';
+import { ThemeProvider } from './context/ThemeContext';
 import './css/app.css';
 
-function App() {
+const App: React.FC = () => {
   const [currentTheme, setCurrentTheme] = useState<Theme>(themes[0]);
   const [blocks, setBlocks] = useState<any[]>([]);
 
@@ -24,46 +26,42 @@ function App() {
   }, [currentTheme]);
 
   return (
-    <Router>
-      <div className="app">
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              <BlogEditor 
-                blocks={blocks}
-                onBlocksChange={setBlocks}
-              />
-            } 
+    <ThemeProvider>
+      <Router>
+        <div className="app">
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <BlogEditor 
+                  blocks={blocks}
+                  onBlocksChange={setBlocks}
+                />
+              } 
+            />
+            <Route 
+              path="/preview" 
+              element={
+                <BlogPreview 
+                  blocks={blocks}
+                  onBack={() => window.history.back()}
+                />
+              } 
+            />
+            <Route 
+              path="/:slug" 
+              element={<BlogPost />} 
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+          <ThemeSwitcher 
+            currentTheme={currentTheme}
+            onThemeChange={setCurrentTheme}
           />
-          <Route 
-            path="/preview" 
-            element={
-              <BlogPreview 
-                blocks={blocks}
-                onBack={() => window.history.back()}
-              />
-            } 
-          />
-          <Route 
-            path="/publish" 
-            element={
-              <BlogPreview 
-                blocks={blocks}
-                isPublished={true}
-                onBack={() => window.history.back()}
-              />
-            } 
-          />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-        <ThemeSwitcher 
-          currentTheme={currentTheme}
-          onThemeChange={setCurrentTheme}
-        />
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
